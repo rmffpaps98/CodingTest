@@ -35,6 +35,7 @@
 
 
 [최초 풀이 코드]  >> 시간초과로 인한 실패
+
 import sys
 
 input = sys.stdin.readline
