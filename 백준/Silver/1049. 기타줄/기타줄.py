@@ -28,3 +28,35 @@ while n > 0:
         result += min_package
 
 print(result)
+
+
+#####################################################################
+# 처음 제출답안  >>  단품 6개 구매가 패키지보다 싼 경우를 포함하지 않음
+import sys
+
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+cases = []
+ones = []
+
+for _ in range(m):
+    c, o = map(int, input().split())
+    cases.append(c)
+    ones.append(o)
+
+result = 0
+
+while n > 0:
+    min_case = min(cases)
+    min_one = min(ones)
+    
+    if n >= 6 and min_case <= 6 * min_one:
+        result += min_case
+        n -= 6
+    else:
+        result += min(min_case, min_one * n)
+        break
+
+print(result)
+#####################################################################
