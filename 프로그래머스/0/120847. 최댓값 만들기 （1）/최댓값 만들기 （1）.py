@@ -1,2 +1,2 @@
 def solution(numbers):
-    return sorted(numbers)[-2:][0] * sorted(numbers)[-2:][1]
+    return sorted(numbers)[-2] * sorted(numbers)[-1]
