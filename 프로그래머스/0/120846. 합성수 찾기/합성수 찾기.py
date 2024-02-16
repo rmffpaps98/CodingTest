@@ -8,3 +8,4 @@ def solution(n):
         if num.count(i) >=3:
             count += 1
     return count
+        
