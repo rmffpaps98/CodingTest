@@ -5,7 +5,6 @@ def solution(n, m, section):
     for i in section:
         w[i-1] = True
 
-
     for i in range(n):
         if w[i]:
             answer += 1
