@@ -1,14 +1,17 @@
 def solution(numbers, target):
+    stack = [(0, 0)]
     answer = 0
-    queue = [[numbers[0],0], [-1*numbers[0],0]]
     n = len(numbers)
-    while queue:
-        tmp, idx = queue.pop()
-        idx += 1
-        if idx < n:
-            queue.append([tmp + numbers[idx], idx])
-            queue.append([tmp - numbers[idx], idx])
-        else:
-            if tmp == target:
+    
+    while stack:
+        idx, value = stack.pop()
+        
+        if idx == n:
+            if value == target:
                 answer += 1
+            continue
+
+        stack.append((idx + 1, value + numbers[idx]))
+        stack.append((idx + 1, value - numbers[idx]))
+    
     return answer
