@@ -1,13 +1,27 @@
-from itertools import product
-
 def solution(word):
     answer = 0
-    words = ['A', 'E', 'I', 'O', 'U']
-    dic =[]
+    w = ['A', 'E', 'I', 'O', 'U']
+    idx = 0
     
-    for i in range(1, 6) :
-        for j in product(words, repeat=i) :
-            dic.append(''.join(list(j)))
+    for i in range(len(w)) :
+        idx += 1
+        if w[i] == word :
+            return idx
+        for j in range(len(w)) :
+            idx += 1
+            if w[i]+w[j] == word :
+                return idx
+            for k in range(len(w)) :
+                idx += 1
+                if w[i]+w[j]+w[k] == word :
+                    return idx
+                for l in range(len(w)) :
+                    idx += 1
+                    if w[i]+w[j]+w[k]+w[l] == word :
+                        return idx
+                    for m in range(len(w)) :
+                        idx += 1
+                        if w[i]+w[j]+w[k]+w[l]+w[m] == word :
+                            return idx
 
-    dic.sort()
-    return dic.index(word) + 1
+    return answer
