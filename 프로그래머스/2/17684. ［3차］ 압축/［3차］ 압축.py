@@ -1,19 +1,16 @@
 def solution(msg):
     answer = []
-    alphabet = {j : i+1 for i, j in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
-    idx = 27
+    a = {j : i+1 for i, j in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
     
-    msg = list(msg) + ["0"]
-    start, end = 0, 1
-    
-    while end < len(msg):
-        while ''.join(msg[start:end]) in alphabet:
-            end += 1
-            
-        alphabet[''.join(msg[start:end])] = idx
-        idx += 1
-        
-        answer.append(alphabet[''.join(msg[start:end-1])])
-        
-        start, end = end - 1, end
+    while True:
+        if msg in a:
+            answer.append(a[msg])
+            break
+        for i in range(1, len(msg)+1):
+            if msg[0:i] not in a:
+                answer.append(a[msg[0:i-1]])
+                a[msg[0:i]] = len(a)+1
+                msg = msg[i-1:]
+                break
+
     return answer
