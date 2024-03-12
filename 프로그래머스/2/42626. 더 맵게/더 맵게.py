@@ -8,10 +8,10 @@ def solution(scoville, K):
         if scoville[0] >= K:
             return answer
         else:
-            lowest = heapq.heappop(scoville)
-            second_lowest = heapq.heappop(scoville)
-            new_scoville = lowest + (second_lowest * 2)
-            heapq.heappush(scoville, new_scoville)
+            l1 = heapq.heappop(scoville)
+            l2 = heapq.heappop(scoville)
+            new = l1 + (l2 * 2)
+            heapq.heappush(scoville, new)
             answer += 1
 
     if scoville and scoville[0] >= K:
