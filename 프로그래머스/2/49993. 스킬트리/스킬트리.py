@@ -1,19 +1,14 @@
 def solution(skill, skill_trees):
     answer = 0
-    
+
     for i in skill_trees:
-        idx = 0
-        flag = True
-        
-        for j in i:
-            if j in skill:
-                if j != skill[idx]:
-                    flag = False
+        sl = list(skill)
+
+        for s in i:
+            if s in skill:
+                if s != sl.pop(0):
                     break
-                else:
-                    idx += 1
-        
-        if flag:
+        else:
             answer += 1
-    
+
     return answer
