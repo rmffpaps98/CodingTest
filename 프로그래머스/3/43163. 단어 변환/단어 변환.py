@@ -15,10 +15,5 @@ def solution(begin, target, words):
             if diff == 1:
                 stack.append((w, count + 1))
                 words.remove(w)
-                break
-                
-        diff = sum(1 for a, b in zip(word, target) if a != b)
-        if diff == 1:
-            return count+1
     
     return 0
