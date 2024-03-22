@@ -11,7 +11,6 @@ def dfs(graph, start, path, visited, tickets):
                 return result
             visited[idx] = 0
             path.pop()
-    return None
 
 def solution(tickets):
     tickets.sort(key=lambda x: x[1])
