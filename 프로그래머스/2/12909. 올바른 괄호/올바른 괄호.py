@@ -1,11 +1,13 @@
 def solution(s):
     s1 = []
+    
     for i in s :
-        if i == '(' :
+        if i == "(" :
             s1.append(i)
         else :
             if s1 :
                 s1.pop()
             else :
                 s1.append(i)
-    return True if not s1 else False
+            
+    return False if s1 else True
