@@ -1,13 +1,10 @@
 def solution(n):
-    answer = 0
+    cnt = 0
+    k = 1
     
-    for i in range(1, n+1) :
-        s = 0
-        for j in range(i, n+1) :
-            s += j
-            if s == n :
-                answer += 1
-                break
-            elif s > n :
-                break
-    return answer
+    while k * (k + 1) // 2 <= n:
+        if (n - k * (k + 1) // 2) % k == 0:
+            cnt += 1
+        k += 1
+        
+    return cnt
