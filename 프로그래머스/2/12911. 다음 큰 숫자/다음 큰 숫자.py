@@ -1,6 +1,8 @@
 def solution(n):
-    x = n
+    z_cnt = format(n, 'b').count('1')
     while True :
-        x += 1
-        if bin(n)[2:].count("1") == bin(x)[2:].count("1") :
-            return x
+        n += 1
+        if z_cnt == format(n, 'b').count('1') :
+            return n
+        else :
+            continue
