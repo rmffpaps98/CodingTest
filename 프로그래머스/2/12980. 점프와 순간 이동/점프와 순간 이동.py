@@ -1,2 +1,2 @@
 def solution(n):
-    return bin(n).count('1')
+    return format(n, 'b').count('1')
