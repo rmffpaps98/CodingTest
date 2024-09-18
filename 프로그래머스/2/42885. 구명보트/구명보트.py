@@ -1,13 +1,15 @@
 def solution(people, limit):
-    answer = 0
-    left = 0
-    right = len(people) - 1
     people.sort()
+    l = 0
+    r = len(people) - 1
+    answer = 0
 
-    while left <= right:
-        if people[left] + people[right] <= limit:
-            left += 1
-        right -= 1
+    while l <= r:
+        if people[l] + people[r] <= limit:
+            l += 1
+        r -= 1
         answer += 1
 
     return answer
+
+                
