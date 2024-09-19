@@ -1,12 +1,15 @@
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    return a * b // gcd(a, b)
+
 def solution(arr):
-    answer = 0
-    arr.sort()
+    answer = arr[0]
     
-    for i in range(len(arr)-1):
-        a, b = arr[i], arr[i+1]
-        while a != 0:
-            tmp = b % a
-            a, b = tmp, a
-        arr[i+1] = arr[i] * arr[i+1] // b
-        
-    return arr[i+1]
+    for i in range(1, len(arr)):
+        answer = lcm(answer, arr[i])
+    
+    return answer
