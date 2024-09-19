@@ -1,22 +1,15 @@
 def solution(n, words):
-    used = []
-    p = 0
-    cnt = 0
-    fail = True
+    used = [words[0]]
+    last = words[0][-1]
+    
+    for idx, word in enumerate(words[1:], start=1):
+        if word in used or word[0] != last:
+            player = (idx % n) + 1
+            turn = (idx // n) + 1
+            return [player, turn]
+        
+        used.append(word)
+        last = word[-1]
+    
+    return [0, 0]
 
-    for idx, i in enumerate(words) :
-        fail = False
-        p = (idx % n) + 1
-        cnt = (idx + n) // n
-        if not used :
-            used.append(i)
-        elif used and used[-1][-1] == i[0] and i not in used  :
-            used.append(i)
-        elif i in used :
-            fail = True
-            break
-        else :
-            fail = True
-            break
-
-    return [p, cnt] if fail else [0, 0]
