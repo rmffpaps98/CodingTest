@@ -1,21 +1,24 @@
 def solution(s):
     answer = 0
-    for i in range(len(s)) :
+    n = len(s)
+    
+    pairs = {')' : '(', ']' : '[', '}' : '{'}
+    
+    for i in range(n) :
         stack = []
         ss = s[i:] + s[:i]
+        
         for j in ss :
-            if stack :
-                if stack and stack[-1] == "(" and j == ")" :
-                    stack.pop()
-                elif stack and stack[-1] == "[" and j == "]" :
-                    stack.pop()
-                elif stack and stack[-1] == "{" and j == "}" :
+            if j in pairs.values() :
+                stack.append(j)
+            elif j in pairs :
+                if stack and stack[-1] == pairs[j] :
                     stack.pop()
                 else :
-                    stack.append(j)
-            else :
-                stack.append(j)
-                
-        if not stack :
-            answer += 1
+                    break
+            
+        else :
+            if not stack :
+                answer += 1
+                    
     return answer
