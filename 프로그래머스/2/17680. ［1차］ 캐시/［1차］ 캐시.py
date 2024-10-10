@@ -1,19 +1,19 @@
 def solution(cacheSize, cities):
-    answer = 0   
-    c = []
-    
-    if cacheSize == 0 : return len(cities) * 5
-    
-    for i in cities :
-        i = i.lower()
-        if i in c :
+    answer = 0
+    cache = []
+
+    cities = [city.lower() for city in cities]
+
+    for city in cities:
+        if city in cache:
+            cache.remove(city)
+            cache.append(city)
             answer += 1
-            c.remove(i)
-        else :
+        else:
             answer += 5
-            if len(c) >= cacheSize :
-                c.pop(0)
-        c.append(i)
+            if cacheSize > 0:
+                if len(cache) >= cacheSize:
+                    cache.pop(0)
+                cache.append(city)
+
     return answer
-
-
