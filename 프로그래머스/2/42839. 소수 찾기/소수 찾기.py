@@ -9,7 +9,7 @@ def is_prime(n):
 def dfs(numbers, nums, stack, visit):
     if stack:
         nums.add(int("".join(stack)))
-            
+    
     for i in range(len(numbers)):
         if not visit[i]:
             visit[i] = True
@@ -26,8 +26,8 @@ def solution(numbers):
     
     dfs(numbers, nums, stack, visit)
     
-    for i in nums :
-        if is_prime(i) :
+    for i in nums:
+        if is_prime(i):  # 소수인 경우만 카운트
             answer += 1
     
     return answer
