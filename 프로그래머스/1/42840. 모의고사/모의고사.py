@@ -13,8 +13,5 @@ def solution(answers):
         if answer == c[idx%len(c)]:
             score[2] += 1
 
-    for idx, s in enumerate(score):
-        if s == max(score):
-            result.append(idx+1)
-
-    return result
+    max_score = max(score)
+    return [idx + 1 for idx, s in enumerate(score) if s == max_score]
