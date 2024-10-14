@@ -1,17 +1,12 @@
-def solution(numbers, target):
-    stack = [(0, 0)]
-    answer = 0
-    n = len(numbers)
+def dfs(idx, value, numbers, target):
+    if idx == len(numbers):
+        return 1 if value == target else 0
     
-    while stack:
-        idx, value = stack.pop()
-        
-        if idx == n:
-            if value == target:
-                answer += 1
-            continue
+    add = dfs(idx + 1, value + numbers[idx], numbers, target)
+    sub = dfs(idx + 1, value - numbers[idx], numbers, target)
+    
+    # 두 경우의 수를 더한 결과를 반환
+    return add + sub
 
-        stack.append((idx + 1, value + numbers[idx]))
-        stack.append((idx + 1, value - numbers[idx]))
-    
-    return answer
+def solution(numbers, target):
+    return dfs(0, 0, numbers, target)
