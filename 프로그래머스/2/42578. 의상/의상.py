@@ -8,4 +8,4 @@ def solution(clothes):
     for i, j in c.items() :
         answer *= j
         
-    return answer - 1
+    return answer-1
