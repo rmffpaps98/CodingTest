@@ -1,7 +1,5 @@
 def solution(nums):
-    p = len(set(nums))
-
-    if len(nums) / 2 > p:
-        return p
-    else:
-        return len(nums) / 2
+    c = len(nums) // 2
+    nums = set(nums)
+    
+    return min(c, len(nums))
