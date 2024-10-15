@@ -1,9 +1,12 @@
 def solution(participant, completion):
-    participant.sort()
-    completion.sort()
+    p = dict()
     
-    for i, j in zip(participant, completion) :
-        if i != j :
-            return i
-        
-    return participant[-1]
+    for i in participant:
+        p[i] = p.get(i, 0) + 1
+    
+    for i in completion:
+        p[i] -= 1
+    
+    for key, value in p.items():
+        if value == 1:
+            return key
