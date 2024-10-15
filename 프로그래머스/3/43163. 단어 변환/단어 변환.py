@@ -15,5 +15,3 @@ def solution(begin, target, words):
             if diff == 1:
                 stack.append((w, count + 1))
                 words.remove(w)
-    
-    return 0
