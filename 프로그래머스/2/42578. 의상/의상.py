@@ -1,14 +1,11 @@
 def solution(clothes):
     answer = 1
+    c = dict()
     
-    cloth = {}
     for i, j in clothes :
-        if j in cloth :
-            cloth[j] += 1
-        else :
-            cloth[j] = 1
-    
-    for i in cloth.values() :
-        answer *= (i + 1)
+        c[j] = c.get(j, 1) + 1
+        
+    for i, j in c.items() :
+        answer *= j
         
     return answer - 1
