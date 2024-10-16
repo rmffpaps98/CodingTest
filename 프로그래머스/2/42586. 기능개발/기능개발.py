@@ -1,16 +1,18 @@
 def solution(progresses, speeds):
     answer = []
+    cnt = 1
+    d = (100 - progresses[0] + speeds[0] - 1) // speeds[0]
     
-    while progresses:
-        progresses = [progresses[i] + speeds[i] for i in range(len(progresses))]
+    for i in range(1, len(progresses)):
+        c = (100 - progresses[i] + speeds[i] - 1) // speeds[i]
         
-        cnt = 0
-        while progresses and progresses[0] >= 100:
-            progresses.pop(0)
-            speeds.pop(0)
+        if c <= d:
             cnt += 1
-        
-        if cnt > 0:
+        else:
             answer.append(cnt)
+            cnt = 1
+            d = c
+    
+    answer.append(cnt)
     
     return answer
