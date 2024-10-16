@@ -1,13 +1,17 @@
 def solution(s):
-    s1 = []
+    stack = []
     
     for i in s :
-        if i == "(" :
-            s1.append(i)
+        if i == '(' :
+            stack.append(i)
         else :
-            if s1 :
-                s1.pop()
+            if stack :
+                stack.pop()
             else :
-                s1.append(i)
-            
-    return False if s1 else True
+                return False
+    
+    else :
+        if stack :
+            return False
+
+    return True
