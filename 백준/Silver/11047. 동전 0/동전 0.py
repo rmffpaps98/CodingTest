@@ -1,10 +1,20 @@
+import sys
+input = sys.stdin.readline
+
 n, k = map(int, input().split())
-coin = [int(input()) for _ in range(n)]
+coins = []
+
+for _ in range(n):
+    coins.append(int(input().strip()))
+
 cnt = 0
 
-for c in sorted(coin, reverse=True):
-    if k >= c:
-        cnt += k // c
-        k %= c
+while k > 0:
+    coin = coins.pop()
+
+    if k >= coin:
+        count, rest = divmod(k, coin)
+        cnt += count
+        k = rest
 
 print(cnt)
