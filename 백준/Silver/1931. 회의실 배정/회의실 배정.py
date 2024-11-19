@@ -1,26 +1,20 @@
-n = int(input())
-meeting = []
+import sys
+input = sys.stdin.readline
+
+n = int(input().strip())
+rooms = []
+cnt = 0
+t = 0
 
 for _ in range(n):
     start, end = map(int, input().split())
-    meeting.append((start, end))
+    rooms.append((start, end))
 
-prev_end = 0
-cnt1 = 0
-cnt2 = 0
+rooms.sort(key=lambda x: (x[1], x[0]))
 
-for meet in sorted(meeting, key=lambda x : x[0]):
-    start, end = meet
-    if start >= prev_end:
-        cnt1 += 1
-        prev_end = end
+for s, e in rooms:
+    if t <= s:
+        cnt += 1
+        t = e
 
-prev_end = 0
-
-for meet in sorted(meeting, key=lambda x : x[1]):
-    start, end = meet
-    if start >= prev_end:
-        cnt2 += 1
-        prev_end = end
-
-print(max(cnt1, cnt2))
+print(cnt)
