@@ -1,42 +1,33 @@
 import sys
-
 input = sys.stdin.readline
 
 n = int(input())
-sequnce = [int(input()) for _ in range(n)]
+p = []
+m = []
+answer = 0
 
-pos = []
-neg = []
+for _ in range(n):
+    num = int(input())
+    if num > 1:
+        p.append(num)
+    elif num <= 0:
+        m.append(num)
+    else:
+        answer += 1
 
-for i in sequnce :
-    if i > 0 :
-        pos.append(i)
-    else :
-        neg.append(i)
+p.sort(reverse=True)
+m.sort()
 
-pos.sort()
-neg.sort(reverse=True)
-sum = 0
+for i in range(0, len(p), 2):
+    if i + 1 < len(p):
+        answer += p[i] * p[i + 1]
+    else:
+        answer += p[i]
 
-while len(pos) >= 2 :
-    a = pos.pop()
-    b = pos.pop()
+for i in range(0, len(m), 2):
+    if i + 1 < len(m):
+        answer += m[i] * m[i + 1]
+    else:
+        answer += m[i]
 
-    if a == 1 or b == 1 :
-        sum += a + b 
-    else :
-        sum += a * b
-
-if pos :
-    sum += pos.pop()
-
-while len(neg) >= 2 :
-    a = neg.pop()
-    b = neg.pop()
-
-    sum += a * b
-
-if neg :
-    sum += neg.pop()
-
-print(sum)
+print(answer)
