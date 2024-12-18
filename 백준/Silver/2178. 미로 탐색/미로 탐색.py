@@ -1,31 +1,30 @@
-from collections import deque
 import sys
+from collections import deque
+sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
-dx = [1, -1, 0, 0]
-dy = [0, 0, 1, -1]
 
 def bfs():
+    dx = [0, 0, -1, 1]
+    dy = [1, -1, 0, 0]
     queue = deque([(0, 0)])
-    distance[0][0] = 1
+    dist[0][0] = 1
 
     while queue:
         x, y = queue.popleft()
 
-        if x == n - 1 and y == m - 1:
-            return distance[x][y]
+        if x == n-1 and y == m-1:
+            return dist[x][y]
 
         for i in range(4):
-            nx, ny = x + dx[i], y + dy[i]
+            nx, ny = x+dx[i], y+dy[i]
 
-            if 0 <= nx < n and 0 <= ny < m and maze[nx][ny] == 1 and distance[nx][ny] == 0:
-                distance[nx][ny] = distance[x][y] + 1
+            if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == 1 and dist[nx][ny] == 0:
+                dist[nx][ny] = dist[x][y] + 1
                 queue.append((nx, ny))
-    return -1
 
 n, m = map(int, input().split())
-maze = [list(map(int, input().strip())) for _ in range(n)]
-distance = [[0] * m for _ in range(n)]
+graph = [list(map(int, input().strip())) for _ in range(n)]
+dist = [[0] * m for _ in range(n)]
 
-result = bfs()
-print(result)
+print(bfs())
