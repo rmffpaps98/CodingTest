@@ -1,7 +1,10 @@
-while True :
-    A, B = map(int, input().split())
-    
-    if A == 0 and B == 0 :
+import sys
+input = sys.stdin.readline
+
+while True:
+    result = sum(map(int, input().split()))
+
+    if result == 0:
         break
-    else :
-        print(A+B)
+    else:
+        print(result)
