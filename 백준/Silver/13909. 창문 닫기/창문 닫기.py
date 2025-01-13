@@ -1,7 +1,7 @@
-import math
-
 n = int(input())
 
-result = int(math.sqrt(n))
+sqrt_n = 0
+while (sqrt_n + 1) * (sqrt_n + 1) <= n:
+    sqrt_n += 1
 
-print(result)
+print(sqrt_n)
